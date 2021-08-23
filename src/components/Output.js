@@ -11,9 +11,11 @@ const HeaderOutput = styled.h3 `
 const Output = (props) => {
 
   return (
-    <HeaderOutput>
-      {props.MenuRndOutput}
-    </HeaderOutput>
+    <>
+      <HeaderOutput>
+        {props.MenuRndOutput}
+      </HeaderOutput>
+    </>
   )
 }
 

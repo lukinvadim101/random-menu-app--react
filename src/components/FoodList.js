@@ -1,36 +1,42 @@
 import React from 'react';
 import styled from 'styled-components'
-import MenuListForm from '../list-form/List-form';
+import ListForm from './ListForm';
 
+
+const MenuListWrapper = styled.div `
+  display: flex;
+  width: 250px;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+`
+const MenuListTitle = styled.h3`
+  margin: 25px 0 0 0;
+`
+
+const MenuList = styled.ol `
+  list-style-type: none;
+  padding: 0;
+  font-size: .85em;
+`
 const MenuListItem = styled.li `
-  margin: 0;
+  margin-top: 4px;
   padding: 0;
   &:hover {
+    transition: .4s;
     text-decoration: line-through;
     cursor: pointer;
   }
 `
-const MenuListWrapper = styled.div `
-  ${'' /* width: 80%; */}
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`
-const MenuList = styled.ol `
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  font-size: .8em;
-  `
+
 const Conatiner = styled.div `
   display:flex;
   flex-direction: column;
   justify-content: space-between;
 `
-const List = (props)=> {
+const FoodList = (props)=> {
 
-  const foodList = props.foodList;
+  const foodList = props.list;
   const foodType = props.foodType;
 
   const renderFood = (foodList)=> {
@@ -49,15 +55,15 @@ const List = (props)=> {
   return (
     <MenuListWrapper>
       <Conatiner>
-        <h3>
+        <MenuListTitle>
           {props.title}
-        </h3>
+        </MenuListTitle>
         <MenuList>
             {renderFood(foodList)}
         </MenuList>
       </Conatiner>
-      <MenuListForm
-        foodList = {props.foodList}
+      <ListForm
+        list     = {props.list}
         foodType = {props.foodType}
         onAdd    = {props.onAdd}
       />
@@ -65,4 +71,4 @@ const List = (props)=> {
     )
   }
 
-export default List;
+export default FoodList;

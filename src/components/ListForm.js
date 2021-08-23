@@ -3,26 +3,30 @@ import styled from 'styled-components';
 
 const ListFormWrapper = styled.div `
   display: flex;
-  align-content: center;
   justify-content: center;
-  margin-top: 10px;
 `
 const TextInput = styled.input `
-  width: 33%;
-  padding: 5px 15px;
-  margin: 8px 0;
-  border:2px solid #1f2f47;
-  border-radius: 3px;
+  width: 100px;
+  padding: 2px 10px;
+  border:0;
+  border-radius: 5px;
+  margin-right: 10px;;
 `
-const BtnInput = styled.input `
-  width: 20%;
+const BtnInput = styled.button `
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #fff;
-  padding: 5px 15px;
-  margin: 8px 0;
-  border:2px solid #1f2f47;
-  border-radius: 3px;
+  padding: 0;
+  border:0;
+  border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
+  font-family: none;
+
+
 `
 
 export default class ListForm extends Component {
@@ -43,9 +47,9 @@ export default class ListForm extends Component {
   }
 
   onSubmit(e){
-    const {foodList, foodType} = this.props;
+    const {list, foodType} = this.props;
     e.preventDefault();
-    this.props.onAdd(this.state.text, foodType, foodList);
+    this.props.onAdd(this.state.text, foodType, list);
     this.setState({
       text: ''
     })
@@ -53,18 +57,18 @@ export default class ListForm extends Component {
 
   render() {
     return (
-      <ListFormWrapper>
-        <form onSubmit = {this.onSubmit}>
+      <form onSubmit = {this.onSubmit}>
+        <ListFormWrapper>
           <TextInput
             type="text"
             onChange={this.onValueChange}
             value={this.state.text} //управялемый элемент
             />
-          <BtnInput
-            type="submit"
-            value="+" />
-        </form>
-      </ListFormWrapper>
+          <BtnInput type="submit">
+            +
+          </BtnInput>
+        </ListFormWrapper>
+      </form>
     );
   }
 }
